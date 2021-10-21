@@ -1,25 +1,252 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 
 <head>
-    <meta charset="GBK">
+    <meta charset="gbk">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>leve 2</title>
+    <title>Document</title>
 </head>
+<style>
+    body {
+        color: #666;
+        background-color: #fff;
+    }
+
+    .big {
+        border: 3px solid red;
+        width: 320px;
+        height: 430px;
+        position: fixed;
+        left: 600px;
+        bottom: 170px;
+    }
+
+    .center {
+        position: relative;
+        width: 270px;
+        height: 430px;
+        left: 25px;
+        float: left;
+    }
+
+    .center-top {
+        position: relative;
+        top: 12px;
+        width: 270px;
+        height: 20px;
+    }
+
+    .top-link {
+        text-decoration: none;
+        color: #666;
+        font-size: 12px;
+        float: right;
+    }
+
+    .picture1 {
+        position: relative;
+        top: 3px;
+        height: 16px;
+        margin-left: 3px;
+    }
+
+    .center-input {
+        position: relative;
+        height: 38px;
+        width: 268px;
+        margin: 8px 0px;
+        top: 12px;
+        border: 1px solid #666;
+    }
+
+    .phone-input {
+        width: 180px;
+        height: 26px;
+        position: relative;
+        border: none;
+        outline: none;
+        font-size: 15px;
+    }
+
+    .center-input-left {
+        position: relative;
+        margin: 0px;
+        font-size: 14px;
+        display: inline-block;
+        top:5px;
+    }
+
+    .second {
+        top:20px;
+    }
+    .picture2{
+        height:20px;
+        left:50px;
+    }
+    .picture2-span{
+        display: inline-block;
+        margin:px 0 5px 5px ;
+        position:relative;
+        top:4px;
+        left:7px;
+    }
+    .phone-input2{
+        position: relative;
+        left:10px;
+    }
+    .middle{
+        position:relative;
+        width:270px;
+        height:18px;
+        top:20px;
+        padding-bottom: 8px;
+    }
+    .middle-right{
+        float:right;
+        position:relative;
+        color:#FE8C00;
+        text-decoration: none;
+        font-size:12px;
+
+    }
+    .login {
+        position:relative;
+        width:270px;
+        height:34px;
+        top:30px;
+        box-shadow: 0px 3px 1px rgb(255, 233, 167) ;
+    }
+    .login-submit {
+        width:270px;
+        height:34px;
+        background-image: linear-gradient(to right,#FFD000,#FFBD00);
+        border:0px;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing:2px;
+        cursor:pointer;
+    }
+    .login-bottom{
+        position: relative;
+        width:270px;
+        height:21px;
+        font-size: 14px;
+        top:40px;
+    }
+    .login-bottom-2{
+        color: #FE8C00;
+        text-decoration: none;
+    }
+    .read{
+        position: relative;
+        width:27px;
+        height:83px;
+        top:50px;
+    }
+    #input-read{
+        display: none;
+    }
+    .input-label img{
+        width:20px;
+        position:relative;
+        top:5px;
+        left: 7px;
+    }
+    .input-word{
+        float: right;
+        width:243px;
+        height: 83px;
+        position: relative;
+        bottom: 28px;
+        left:4px;
+        font-size:14px;
+        color:rgba(0,0,0,.5);
+    }
+    .input-a{
+        color: #FE8C00;
+        text-decoration: none;
+    }
+    .center-bottom{
+        width:270px;
+        height: 20px;
+        position: relative;
+        top:65px;
+    }
+    .center-bottom1{
+        position: relative;
+        width:60px;
+        height:20px;
+        border-top:1px solid rgb(172, 168, 168);
+        bottom:75px;
+        display: inline-block;
+    }
+    .center-bottom2{
+        position: relative;
+        width:60px;
+        height:20px;
+        display: inline-block;
+        float:right;
+        bottom:75px;
+        border-top:1px solid rgb(172, 168, 168);
+    }
+    .bottom-span{
+        font-size:14px;
+        color:#666;
+    }
+    .bottom-div{
+        width:140px;
+        height:22px;
+        display: inline-block;
+        position: relative;
+    }
+    .bottom-div{
+        width:140px;
+        height:22px;
+        left:15px;
+        bottom:90px;
+    }
+    .bottom-logo{
+        width:110px;
+        height:40px;
+        position: relative;
+        top:60px;
+        left:80px;
+    }
+    .bottom-logo > img{
+        float:left;
+        position: relative;
+        bottom: 40px;
+
+    }
+    .img4{
+        margin-right:20px;
+        margin-left:20px;
+    }
+</style>
 
 <body>
-    <div
-        style="width: 600px;height: 350px;background-color: salmon;position: absolute;top:20% ;left: 30%;text-align: center;">
-        <h2>我怎么跑中间来了呢</h2>
-        <div
-            style="width: 300px;height: 100px; background-color:#33FFFF;text-align: center;border-radius: 20px;position: relative;left: 150px;line-height: 100px;">
-            圆角边框真可爱~</div>
-            <p style="text-align: center;margin-top: 20px;margin-bottom: 20px;" > 下面是我的两个左右护法 </p>
-            <div style="width: 600px;height: 80px;"><div style="width: 220px; height: 80px;border-radius: 20px;float: left;background-color:#33CCFF;line-height: 80px;">我是可爱的左护法</div>
-            <span style="line-height: 80px;">你们把我挤到了！！</span>
-            <div style="width: 220px; height: 80px;border-radius: 20px;float: right;background-color:#33CCFF;line-height: 80px;">我是比左护法还可爱的右护法</div></div>
-    
+    <div class="big">
+        <div class="center">
+            <div class="center-top">
+                <span style="font-size: 14px;">账号登录</span>
+                <a href="#" class="top-link">手机动态码登录<img src="picture/1.png" class="picture1" alt=""></a>
+            </div>
+            <div class="center-input"><span class="center-input-left">+86<span style="margin:0px 4px">></span>
+                    <span><input type="text" class="phone-input" value placeholder="手机号"></span></span></div>
+            <div class="center-input second"><span class="center-input-left"><span class="picture2-span"><img src="picture/2.png" class="picture2" alt=""></span>
+                    <span><input type="text" class="phone-input phone-input2" value placeholder="密码"></span></span></div>
+            <div class="middle">
+                <a href="#"class="middle-right">忘记密码？</a>
+            </div>
+            <div class="login"><input type="submit" class="login-submit" value="登录"></div>
+            <div class="login-bottom"><span class="login-bottom-1">还没有账号？</span><a class="login-bottom-2" href="#">免费注册</a></div>
+            <div class="read"><label for="input-read" class="input-label"><img src="picture/3.png" alt=""></label><input type="checkbox" id="input-read"></div>
+            <div class="input-word">我已阅读并同意<a href="#" class="input-a">《美团用户协议》</a><a href="#" class="input-a">《隐私政策》 </a>，并授权美团使用该美团账号信息（如昵称、头像、收货地址）进行统一管理</div>
+            <div class="center-bottom"><div class="center-bottom1"></div><div class="bottom-div"><span class="bottom-span">用合作网站账号登录</span></div><div class="center-bottom2"></div></div>
+            <div class="bottom-logo"><img src="picture/4.png" class="img4" alt=""><img src="picture/5.png" alt=""></div>
+            
+        </div>
     </div>
 </body>
-       
+
 </html>
