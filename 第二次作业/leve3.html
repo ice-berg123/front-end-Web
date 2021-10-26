@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        .center{
+            width:250px;
+            height:60px;
+            background-color:aliceblue;
+            border-radius: 5px;
+            position: relative;
+            margin:auto;
+            top:350px;
+        }
+        .picture{
+            width:25px;
+            position: relative;
+            left:25px;
+            top:18px;
+        }
+        .word{
+            left:35px;
+            top:10px;
+            position: relative;
+        }
+        .picture:hover{
+            cursor: pointer;
+        }
+        .notice{
+            width:200px;
+            height: 50px;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            text-align: center;
+            top:-80px;
+            left:-65px;
+            visibility: hidden;
+            transition-duration: 800ms;
+            color:rgb(128,128,128);
+        }
+        .notice-bottom{
+            width:200px;
+            height:10px;
+            border-radius: 0 0 10px 10px;
+            position: relative;
+            z-index: 1;
+            top:-80px;
+            left:-65px;
+            visibility: hidden;
+            transition-duration: 500ms;
+        }
+        .delta{
+            visibility: hidden;
+            border-style: solid;
+            position: absolute;
+            width:0px;
+            top:10px;
+            left:90px;
+            height: 0px;
+            border-width: 10px 10px 0 10px;
+            z-index: 1;
+            left:26px;
+        }
+        .picture:hover~.delta{
+            visibility:visible;
+            border-color:rgb(51,51,51) white transparent white;
+            background-color:rgb(51,51,51);
+        }
+        .picture:hover~.notice-bottom{
+            visibility:visible;
+            background-color:rgb(51,51,51);
+        }
+        .picture:hover~.notice{
+            visibility:visible;
+            color:rgb(217,212,217);
+            background-color:rgb(51,51,51);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="center"><img src="picture/1.png" class="picture" alt=""><span class="word">Hover over the "i"!</span><div class="notice"><span>Sample text for your tooltip!</span></div><div class="notice-bottom"></div><div class="delta"></div></div>
+</body>
+</html>
