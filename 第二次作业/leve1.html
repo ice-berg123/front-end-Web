@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="gbk">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        body{
+            display:flex;
+            flex-flow:row warp;
+            justify-content: space-around;
+            align-items: center;
+        }
+        @media screen and (max-width: 650px){
+            body{
+                display:flex;
+                flex-flow:row wrap;
+                justify-content: space-between;
+                align-items: flex-start;
+                
+            }
+            .size-4{
+                order:-1;
+            }
+        }
+        .size{
+            border:2px solid red;
+            width:150px;
+            margin:5px;
+            
+        }
+        .size-1{
+            height:120px;
+        }
+        .size-2{
+            height:100px;
+        }
+        .size-3{
+            height:40px;
+        }
+        .size-4{
+            height:200px;
+            border-color:blue;
+        }
+    </style>
+</head>
+    <body>
+        <div class="size size-1">1</div>
+        <div class="size size-2">2</div>
+        <div class="size size-3">3</div>
+        <div class="size size-4">4</div>
+    </body>
+</html>

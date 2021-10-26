@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(34,37,38);
+        }
+        .center{
+            margin-top:100px;
+            display: grid;
+            height: 600px;
+            column-gap:130px;
+            grid-template-columns: 350px 350px 350px;
+            grid-template-rows: 450px;
+            align-content: center;
+            justify-content: center;
+            
+        }
+        .box{
+            border:20px solid rgb(34,37,38);
+            box-shadow: -10px -10px 10px rgb(48, 51, 51);
+            border-radius: 15px;
+        }
+        .box-right{
+            position:relative;
+            top:-30px;
+            left:-30px;
+            width:370px;
+            height:470px;
+            border-radius: 15px;
+            box-shadow:inset -10px -10px 15px rgb(48,50,54),20px 20px 0px rgb(33,35,37);
+        }
+        .card{
+            position:relative;
+            top:-460px;
+            border-radius: 18px;
+            left:5px;
+            width:310px;
+            height: 410px;
+            background-color: rgb(48,50,54);
+            transition-duration: 200ms;
+            transition-timing-function: linear;
+            
+        }
+        .card-right{
+            border-radius: 0 18px 18px 0;
+            float:right;
+            position: relative;
+            top:-340px;
+            width:155px;
+            height:410px;
+            background-color: rgb(41,43,47);
+        }
+        .card:hover{
+            transform: translateY(-50px);
+        }
+        .number{
+            display: inline-block;
+            position: relative;
+            left:120px;
+            top:-60px;
+            z-index:1;
+            color:rgba(224, 224, 224,0.1);
+            font-size: 130px;
+            font-weight: 900;
+        }
+        .title{
+            color:aliceblue;
+            font-size: 33px;
+            font-weight:1000;
+            z-index: 1;
+            position: relative;
+            margin-right:10px;
+            left:80px;
+            top:-130px;
+        }
+        .word{
+            color:rgb(221,221,221);
+            font-size: 13px;
+            font-weight: 500;
+            z-index: 1;
+            position: relative;
+            margin-right:10px;
+            left:40px;
+            top:-100px;
+            width:250px;
+            display: inline-block;
+            text-align: center;
+            line-height: 25px;
+            word-spacing: 2px;
+        }
+        .read{
+            width: 150px;
+            height: 50px;
+            border-radius: 10px;
+            position: relative;
+            top:270px;
+            z-index: 1;
+            left: 80px;
+            text-align: center;
+            line-height: 47px;
+            transition-duration: 500ms;
+            transition-timing-function: linear;
+            
+        }
+        .read-1{
+            background-color: rgb(35,148,241);
+            color:aliceblue;
+        }
+        .read-2{
+            background-color: rgb(232,32,101);
+            color:aliceblue;
+        }
+        .read-3{
+            background-color: rgb(34,194,133);
+            color:aliceblue;
+        }
+        .read:hover{
+            background-color: aliceblue;
+            color:black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <div class="box box-1"><div class="box-right"></div><div class="card"><div class="read read-1" >Read More</div><span class="number">01</span><span class="title">Card</span><span class="title">One</span><span class="word">If a person really likes you, he will let you know, rather than ambiguity, let you guess.</span><div class="card-left"></div><div class="card-right"></div></div></div>
+        <div class="box box-2"><div class="box-right"></div><div class="card"><div class="read read-2" >Read More</div><span class="number">02</span><span class="title">Card</span><span class="title">Two</span><span class="word">If a person really likes you, he will let you know, rather than ambiguity, let you guess.</span><div class="card-left"></div><div class="card-right"></div></div></div>
+        <div class="box box-3"><div class="box-right"></div><div class="card"><div class="read read-3" >Read More</div><span class="number">03</span><span class="title">Card</span><span class="title">Three</span><span class="word">If a person really likes you, he will let you know, rather than ambiguity, let you guess.</span><div class="card-left"></div><div class="card-right"></div></div></div>
+    </div>
+</body>
+</html>
