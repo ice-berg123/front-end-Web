@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var obj = { name:"billy",
+                    age:21,
+                    gender:"male"};
+        function copy1(insertObj){
+            let newObj = {};
+            for(let i in insertObj){
+                newObj[i] = insertObj[i];
+            }
+            return newObj;
+        }
+        function copy2(insertObj){
+            let newObj = {};
+            for(let i of Object.keys(insertObj)){
+                newObj[i] = insertObj[i];
+            }
+            return newObj;
+        }
+        function copy3(insertObj){
+            let newObj = {};
+            for(let [key,value] of Object.entries(obj)){
+                newObj[key] = value;
+            }
+            return newObj;
+        }
+        var obj1 = copy1(obj);
+        var obj2 = copy2(obj);
+        var obj3 = copy3(obj);
+        let arr = [];
+        arr.push(obj1,obj2,obj3);
+        console.table(arr);
+    </script>
+
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+</html>
