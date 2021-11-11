@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gdb">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj1 = {
+            name:"美羊羊",
+            do:"看喜羊羊洗澡",
+            hate:"被沸羊羊追",
+            age:100
+        };
+        function copy(obj){
+            return {...obj}; //开辟新堆区，把obj的属性copy进新堆区
+        }
+        let obj2 = shallowCopy(obj1);//将obj2指向函数开辟的新堆区
+        console.log(obj2);
+    </script>
+</body>
+</html>
