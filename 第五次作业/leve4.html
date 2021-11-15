@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="rgb">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: white;
+        }
+        #top {
+            position:absolute;
+            left:850px;
+            top:50px;
+            height: 32px;
+            width: 150px;
+            background-color: aliceblue;
+            text-align: center;
+            padding-top: 8px;
+            border-radius: 50px;
+            font-weight: 550;
+            border:2px solid rgb(62, 178, 224);
+        }
+        #write {
+            position:absolute;
+            width:880px;
+            height:820px;
+            top:110px;
+            left:500px;
+            background-color: aliceblue;
+        }
+        #write-left {
+            position:relative;
+            height:30px;
+            width:690px;
+            top:10px;
+            color:#555;
+            border-radius: 10px;
+            padding-left: 10px;
+            padding-bottom: 50px;
+            background-color: #f4f5f7;
+            border:1px solid #e5e9ef;
+            left:40px;
+        }
+        #write-left:focus{
+            outline:0;
+            border:1px solid #00a1d6;
+            background-color: white;
+        }
+        #submit {
+            top:10px;
+            position: relative;
+            float:right;
+            width:  80px;
+            height: 80px;
+            right:50px;
+            border-radius: 10px;
+            background-color: rgb(0,161,214);
+            border:1px solid rgb(255, 255, 255);
+            color:white;
+        }
+        #submit:hover {
+            background-color: rgb(0,181,229);
+        }
+        .color {
+            position:relative;
+            right:660px;
+            top:100px;
+            width:10px;
+        }
+        .color-red {
+            background-color: rgb(212, 99, 99);
+            border-radius: 5px;
+            border:1px solid white;
+        }
+        .color-blue {
+            background-color: rgb(116, 165, 255);
+            border-radius: 5px;
+            border:1px solid white;
+        }
+        .color-black {
+            background-color: rgb(0, 0, 0);
+            border-radius: 5px;
+            border:1px solid white;
+        }
+        .color-green {
+            background-color: rgb(193, 247, 176);
+            border-radius: 5px;
+            border:1px solid white;
+        }
+        .color:hover {
+            border:1px solid rgb(63, 146, 179);
+        }
+        #read {
+            position:absolute;
+            width:800px;
+            height:650px;
+            left:540px;
+            top:260px;
+        }
+        read div {
+            position: relative;
+            color:#555;
+            font-size: 14px;
+        }
+        div a {
+            float:right;
+            text-decoration: none;
+            color:#555;
+            width:40px;
+            height: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        div a:hover{
+            color:rgb(212, 94, 94);
+
+        }
+        #nw {
+            position: absolute;
+            width:150px;
+            height: 30px;
+            color:white;
+            top:75px;
+            left:1218px;
+            z-index: 1;
+            background-color: rgba(255, 0, 0,0.8);
+            border-radius: 7px;
+            padding-top: 10px;
+            text-align: center;
+            display: none;
+        }
+        div span {
+            position: relative;
+            color:#555;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="top">留言板</div>
+    <div id="nw">你还没有评论！</div>
+    <div id="write"><input type="text" id="write-left" value placeholder="快来评论吧~"><input type="submit" id="submit" value="发表评论"><input type="button" class="color color-red"><input type="button" class="color color-blue"><input type="button" class="color color-black"><input type="button" class="color color-green"></div>
+    <div id="read"></div>
+    <script>
+        let write = document.getElementById('write-left');
+        let submit = document.getElementById('submit');
+        let read = document.getElementById('read');
+        let color = document.getElementsByClassName('color');
+        let p_color;
+        let colors = ["rgb(212, 99, 99)","rgb(116, 165, 255)","rgb(0, 0, 0)","rgb(193, 247, 176"];
+        for(let i = 0; i < color.length;i++){
+            color[i].onclick = function(){
+                if(i == 0){
+                    write.style.color = colors[0];
+                    p_color = 0;
+                }
+                if(i == 1){
+                    write.style.color =colors[1];
+                    p_color = 1;
+                }
+                if(i == 2){
+                    write.style.color = colors[2]
+                    p_color = 2;
+                }
+                if(i == 3){
+                    write.style.color = colors[3];
+                    p_color = 3;
+                }
+            }
+        }
+        
+        submit.onclick = function(){
+            let nw = document.getElementById('nw');
+            if(write.value == ""){
+                nw.style.display = 'block';
+            }else{
+                nw.style.display = 'none';
+                let p = document.createElement('div');
+                p.style.marginBottom = '40px';
+                p.innerHTML = write.value + '<a href="javascript:;">删除</a>';
+                read.insertBefore(p,read.children[0]);
+                let delete_p = document.querySelectorAll('a');
+                p.style.color = colors[p_color];
+                write.value = "";
+                for(let i = 0; i<delete_p.length;i++){
+                delete_p[i].onclick = function(){
+                    read.removeChild(this.parentElement);
+                    }
+                }
+                let time = getTime();
+                let te = document.createElement('span');
+                te.style.float = 'left';
+                te.style.top = '30px';
+                te.style.width = p.style.widh;
+                te.innerHTML = time;
+                p.appendChild(te);
+
+            }
+        }
+        function getTime(){
+            let time = new Date();
+            return time.getFullYear() + '-' + time.getMonth() + '-' + time.getDate() + ' ' + time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
+        }
+    </script>
+</body>
+</html>

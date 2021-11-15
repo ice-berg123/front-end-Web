@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="gdb">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lv2</title>
+</head>
+
+<body>
+
+    <div align="center">
+        <b>请选择您的爱好</b>
+        <br />
+    </div>
+
+    <div id="divlist" align="center">
+        <input type="checkbox" class="check" value="内卷">内卷
+        <input type="checkbox" class="check" value="疯狂内卷">疯狂内卷
+        <input type="checkbox" class="check" value="拼命内卷">拼命内卷
+        <input type="checkbox" class="check" value="使劲内卷">使劲内卷
+        <br />
+        <input type="button" id="s_all" value="全选">
+        <input type="button" id="ns_all" value="全不选">
+        <input type="button" id="r_select" value="反选">
+        <input type="button" value="提交">
+    </div>
+    <script>
+        let checkbox = document.getElementsByClassName("check");
+        let select_all = document.getElementById("s_all");
+        let ns_all = document.getElementById("ns_all");
+        let r_select = document.getElementById("r_select");
+        select_all.onclick = function(){
+            for(let i = 0; i < checkbox.length; i++){
+                checkbox[i].checked = true;
+            }
+        }
+        ns_all.onclick = function(){
+            for(let i = 0; i < checkbox.length; i++){
+                checkbox[i].checked = false;
+            }
+        }
+        r_select.onclick = function(){
+            for(let i = 0; i < checkbox.length; i++){
+                if(checkbox[i].checked == true){
+                    checkbox[i].checked = false;
+                }else{
+                    checkbox[i].checked = true;
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>
