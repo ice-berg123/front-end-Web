@@ -99,12 +99,14 @@
             left:540px;
             top:260px;
         }
-        read div {
+        #read div {
             position: relative;
             color:#555;
             font-size: 14px;
+            margin-bottom: 40px;
         }
         div a {
+            position: relative;
             float:right;
             text-decoration: none;
             color:#555;
@@ -112,6 +114,7 @@
             height: 20px;
             border-radius: 5px;
             text-align: center;
+            
         }
         div a:hover{
             color:rgb(212, 94, 94);
@@ -135,6 +138,10 @@
             position: relative;
             color:#555;
             font-size: 10px;
+            width:800px;
+            display:inline-block;
+            height:20px;
+            top:30px;
         }
     </style>
 </head>
@@ -172,13 +179,12 @@
         }
         
         submit.onclick = function(){
-            let nw = document.getElementById('nw');
+            let nw = document.querySelector("#nw");
             if(write.value == ""){
                 nw.style.display = 'block';
             }else{
                 nw.style.display = 'none';
                 let p = document.createElement('div');
-                p.style.marginBottom = '40px';
                 p.innerHTML = write.value + '<a href="javascript:;">É¾³ý</a>';
                 read.insertBefore(p,read.children[0]);
                 let delete_p = document.querySelectorAll('a');
@@ -191,9 +197,6 @@
                 }
                 let time = getTime();
                 let te = document.createElement('span');
-                te.style.float = 'left';
-                te.style.top = '30px';
-                te.style.width = p.style.widh;
                 te.innerHTML = time;
                 p.appendChild(te);
 

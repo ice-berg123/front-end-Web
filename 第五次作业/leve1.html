@@ -36,25 +36,23 @@
     <p>我给你我的寂寞、我的黑暗、我心的饥渴；我试图用困惑、<span>危险</span>、失败来打动你。</p>
     <button type="button" >点我隐藏文字</button>
     <script>
-        let list_p = document.getElementsByTagName("p");
-        let flag = 0;
+        let list_span = document.querySelectorAll("span");
         let but = document.querySelector("button");
-        let biu = 0;
+        let flag = 0;
         but.onclick = function(){
             biu = 1;
             if(flag == 0 && biu == 1){
-                for(let i = 0; i < list_p.length; i++){
-                    list_p[i].style.visibility = 'hidden';
+                for(let i = 0; i < list_span.length; i++){
+                    list_span[i].style.backgroundColor = 'white';
                 }
                 flag = 1;
                 biu = 0;
             }
             if(flag == 1 && biu == 1){
-                for(let i = 0; i < list_p.length; i++){
-                    list_p[i].style.visibility = 'visible';
+                for(let i = 0; i < list_span.length; i++){
+                    list_span[i].style.backgroundColor = 'black';
                 }
                 flag = 0;
-                
             }
         }
     </script>
