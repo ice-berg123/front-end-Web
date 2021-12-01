@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gdb">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .circle{
+        border-radius:100%;
+        width:100px;
+        height: 100px;
+        margin-bottom: 10px;
+        transition-duration: 1000ms;
+      }
+      .translate{
+        transform: translateX(100px);
+      }
+      .first{
+        background-color: rgb(0,255,255);
+      }
+      .second{
+        background-color: rgb(255,140,0);
+      }
+      .third{
+        background-color: rgb(112,128,144);
+      }
+    </style>
+</head>
+<body>
+    <div class="circle first"></div>
+    <div class="circle second" ></div>
+    <div class="circle third"></div>
+    <script>
+      let p = document.querySelectorAll(".circle");
+      //1.setTimeout定时嵌套
+    /*  setTimeout(()=>{
+        p[0].classList.add("translate");
+        setTimeout(()=>{
+          p[1].classList.add("translate");
+          setTimeout(()=>{
+            p[2].classList.add("translate");
+          },1000);
+        },1000);
+      },1000);
+      */
+      //2.Promise链式回调
+      //第一种
+      /* let pr = new Promise((resolve,reject) => {
+        resolve();
+      }).then(
+        setTimeout(() => {
+          p[0].classList.add("translate");
+        },1000)
+      ).then(
+        setTimeout(() => {
+          p[1].classList.add("translate");
+        },2000)
+      ).then(
+        setTimeout(() => {
+          p[2].classList.add("translate");
+        },3000)
+      )
+      */
+      //第二种
+      /* let pr = new Promise((resolve,reject) => {
+        setTimeout(() => {
+          resolve();
+        },1000);
+      }).then(()=>{
+        p[0].classList.add("translate");
+        return new Promise((resolve,reject) => {
+          setTimeout(() => {
+            resolve();
+          },1000);
+        })
+      }).then(() => {
+        p[1].classList.add("translate");
+        return new Promise((resolve,reject) => {
+          setTimeout(() => {
+            resolve();
+          },1000);
+        })
+      }).then(() => {
+        p[2].classList.add("translate");
+        return new Promise((resolve,reject) => {
+          setTimeout(() => {
+            resolve();
+          },1000);
+        })
+      }) */
+      //3.aysnc await异步队列
+      let step = (time,i) => {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            p[i].classList.add("translate");
+            resolve();
+          },time);
+        })
+      }
+      async function main(){
+        await step(1000,0);
+        await step(1000,1);
+        await step(1000,2);
+      }
+      main();
+    </script> 
+</body>
+</html>
