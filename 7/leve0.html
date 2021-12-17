@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gpd">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function getHomework(){
+        const url = "http://anonym.ink:8000/homework/get_homework";
+        let re =await fetch(url,{
+            method:'POST',
+            headers: {
+                'Content-Type': 'text/html'
+            }
+        })
+            let response = await re;
+
+            console.log(await response.text());
+        }
+        
+        getHomework();
+    </script>
+</body>
+</html>

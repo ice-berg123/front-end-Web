@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="rgb">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id = "text" type="text" name="content">
+    <input id="submit" type="submit" value="Ìá½»">
+    <p id = 'answer'></p>
+    <script>
+        let submit = document.querySelector("#submit");
+        let anw = document.querySelector("#answer");
+        submit.addEventListener("click",()=>{
+            let text = document.querySelector("#text");
+            let form = new FormData();
+            form.set("message",text.value);
+            console.log(form.get("message"));
+            getHomework(form);
+        })
+        async function getHomework(form){
+            let url = "http://anonym.ink:8000/homework/fufubot_test/";
+            let res = await fetch(url,{
+                method:'POST',
+                body:form,
+            });
+            anw.innerHTML = await res.text();
+        }
+        
+    </script>
+</body>
+</html>

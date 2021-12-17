@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="rgb">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let sayname = {
+            name:function idol(name1,name2){
+                console.log("我的idol：",this.idol,name1,name2);
+                return 1;
+            }
+        }
+        
+        //害，可我想粉钰姐咋办
+        
+        let me ={
+            idol:"钰姐"
+        }
+        Function.prototype.myCall = function (obj) {
+            var obj = obj || window;
+            obj.p = this;
+            let result = obj.p(...([...arguments].slice(1)));
+            return result;
+            delete obj.p;
+        }
+        Function.prototype.myApply = function(obj){
+            var obj = obj || window;
+            obj.p = this;
+            let result = obj.p(...[...arguments].flat().slice(1));
+            return result;
+            delete obj.p;
+        }
+        console.log(sayname.name.myCall(me,"你好","憨憨"));
+        console.log(sayname.name.myApply(me,["你好","憨憨"]));
+    </script>
+</body>
+</html>

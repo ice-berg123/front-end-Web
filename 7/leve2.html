@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        async function getHomework() {
+            if (JSON.stringify(localStorage) == "{}") {
+                let url = "http://anonym.ink:8000/homework/auth/login";
+                let res = await fetch(url, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        username: "admin",
+                        password: "root",
+                        Response: "text",
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+                let jwt = (await res.json()).data;
+                localStorage.setItem("Authorization", "BEARER " + jwt);
+            }
+            url = "http://anonym.ink:8000/homework/auth/next_level";
+            let token = localStorage.getItem("Authorization");
+            res = await fetch(url, {
+                method: "GET",
+                headers: {
+                    Authorization: token,
+                },
+            });
+            console.log(await res.text());
+        }
+        
+        getHomework();
+    </script>
+</body>
+
+</html>

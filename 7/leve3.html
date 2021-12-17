@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="rgb">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dialog{
+            position: absolute;
+            left: 27%;
+            top: 15%;
+            width:900px;
+            height:700px;
+        }
+        .top{
+            position: relative;
+            width:900px;
+            height: 100px;
+            border-radius: 20px 20px 0 0;
+            background-color: rgb(40,44,52);
+        }
+        .bottom{
+            width:900px;
+            height: 590px;
+            background-color: rgb(250,250,250);
+            border-radius: 0 0 20px 20px;
+        }
+        .right{
+            position: relative;
+            top:-590px;
+            left:700px;
+            width:200px;
+            height:590px;
+            background-color: rgb(250,250,250);
+            border-radius: 0 0 20px 0;
+        }
+        .title{
+            width:200px;
+            height: 30px;
+            background-color: rgb(89,169,228);
+            text-align: center;
+            padding-top: 3px;
+        }
+        .rig{
+            width:199px;
+            height:293px;
+            border:1px solid rgb(216,216,216);
+            border-top:0px;
+            color:aliceblue;
+        }
+        .input{
+            position: relative;
+            top:350px;
+            width:700px;
+            height:235px;
+            border-top:1px solid rgb(216,216,216);
+        }
+        textarea {
+            resize: none;
+            border:none;
+            background-color: rgb(250,250,250);
+            width: 650px;
+            height:150px;
+            position: relative;
+            outline: none;
+            top:20px;
+            left:25px;
+            font-size:medium;
+            }
+        .submit{
+            position: relative;
+            top:40px;
+            left:600px;
+            width: 90px;
+            height: 30px;
+            border-radius: 4px;
+            background-color: rgb(64,147,215);
+            border:none;
+            color: white;
+        }
+        .submit:hover{
+            background-color: rgb(136,180,227);
+        }
+        .load{
+            float:right;
+            width:300px;
+            height: 50px;
+            background-color: antiquewhite;
+            font-size: medium;
+            color:white;
+            background-color: rgb(64,147,215);
+            border-radius: 5px;
+        }
+        .load-n{
+            position: relative;
+            padding-top: 12px;
+            padding-left: 10px;
+        }
+        .username{
+            outline: none;
+            width: 100px;
+        }
+        .loading{
+            background-color: rgb(6,188,252);
+            border-radius: 2px;
+            border:none;
+            color:white;
+        }
+        .loading:hover{
+            background-color: rgb(136,180,227);
+        }
+        .temp_name{
+            position: relative;
+            left:70px;
+            top:-20px;
+            display: none;
+        }
+        .temp_dialog{
+            position: relative;
+            border-radius: 5px;
+            background-color: rgb(222,244,225);
+            text-align: center;
+            padding: 5px;
+            font-size:medium;
+            width:fit-content;
+            left:50px;
+            top:-32px;
+        }
+        .temp_mydialog{
+            position: relative;
+            border-radius: 5px;
+            background-color: rgb(18,183,245);
+            text-align: center;
+            padding: 5px;
+            font-size:medium;
+            width:fit-content;
+            left:50px;
+            top:-32px;
+        }
+        .allMessage{
+            padding: 20px;
+            position: absolute;
+            width:660px;
+            height: 300px;
+            overflow: auto;
+        }
+        .temp_img{
+            position: relative;
+            width:30px;
+        }
+        .temp_messagebox{
+            width:600px;
+        }
+        .message_name{
+            font-size: smaller;
+            color:rgb(127,127,127);
+        }
+        .me{
+            position: relative;
+            width:180px;
+            height:230px;
+            top:5px;
+            left:7px;
+            overflow: auto;
+        }
+        .mes{
+            color:black;
+            font-size: small;
+            text-align: center;
+        }
+        .url{
+            background-color: rgb(64,147,215);
+            padding: 5px;
+            padding-left: 10px;
+            border-radius: 5px;
+        }
+        .text_url{
+            outline: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div>
+        <div class="load">
+            <div class="load-n">用户名:<div class="temp_name"></div><input type="text" class="username"> <button class="loading">点击登录</button></div>
+            <div class="url">头像url:<input type="text" class="text_url"></div>
+        </div>
+    </div>
+    <div class="dialog">
+        <div class="top">
+            
+        </div>
+        <div class="bottom">
+            <div class="allMessage"></div>
+            <div class="input">
+                <textarea name="" id="" resize:none class="text"></textarea>
+                <button class="submit">发送</button>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-top rig">
+                <div class="title">在线人员</div>
+                <div class="me top_me"></div>
+            </div>
+            <div class="right-bottom rig">
+                <div class="title">消息栏</div>
+                <div class="me"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let username = document.querySelector(".username");
+        let load = document.querySelector(".loading");
+        let submit = document.querySelector(".submit");
+        let text = document.querySelector(".text");
+        let new_message = document.querySelector(".allMessage");
+        let top_title = document.querySelectorAll(".me");
+        let picture_url = document.querySelector(".text_url");
+        let p_url = document.querySelector(".url");
+        if(localStorage.getItem("name") != null){
+            username.value = localStorage.getItem("name");
+            if(localStorage.getItem("picture") != null){
+                picture_url.value = localStorage.getItem("picture");
+            }
+        }
+        load.addEventListener("click",() => {
+            if(localStorage.getItem("name") != username.value){
+                localStorage.setItem("name",username.value);
+            }
+            if(localStorage.getItem("picture") != picture_url.value){
+                localStorage.setItem("picture",picture_url.value);
+            }
+            let name = username.value;
+            let res = new WebSocket("wss://anonym.ink:8000/homework/chatroom?username="+localStorage.getItem("name")+"&avatar="+localStorage.getItem("picture"));
+            res.onopen = () => {
+                load.style.display = "none";
+                username.style.display = "none";
+                p_url.style.display = "none"
+                let temp_name = document.querySelector(".temp_name");
+                temp_name.innerHTML = name;
+                temp_name.style.display = "block";
+            }
+            res.onmessage = (event) => {
+                let message = JSON.parse(event.data);
+                console.log(message);
+                if(message.type === "OPEN"){
+                    let temp_name1 = document.createElement("div");
+                    let temp_name2 = document.createElement("div");
+                    temp_name1.classList.add("mes");
+                    temp_name2.classList.add("mes");
+                    temp_name1.textContent = message.username;
+                    temp_name2.textContent = message.username+"上线啦";
+                    temp_name2.style.color = "rgb(185,185,185)";
+                    top_title[0].appendChild(temp_name1);
+                    top_title[1].appendChild(temp_name2);
+                }
+                if(message.type === "MESSAGE"){
+                    let temp_dialog = document.createElement("div");
+                    let temp_img = document.createElement("img");
+                    let temp_messagebox = document.createElement("div");
+                    let message_name = document.createElement("div");
+                    let message_true = document.createElement("div");
+                    temp_messagebox.appendChild(message_name);
+                    temp_messagebox.appendChild(temp_img);
+                    temp_messagebox.appendChild(temp_dialog);
+                    temp_messagebox.appendChild(message_true);
+                    message_name.textContent = message.username;
+                    temp_img.src = message.avatar;
+                    message_true.classList.add("message_true");
+                    message_name.classList.add("message_name");
+                    temp_messagebox.classList.add("temp_messagebox");
+                    temp_img.classList.add("temp_img");
+                    temp_dialog.classList.add("temp_dialog");
+                    temp_dialog.innerHTML = message.data;
+                    new_message.appendChild(temp_messagebox);
+                    if(message.username === name){
+                        temp_dialog.classList.add("temp_mydialog");
+                    }
+
+                }
+                if(message.type === "CLOSE"){
+                    let all_p = document.querySelector(".top_me").children;
+                    let temp_name3 = document.createElement("div");
+                    temp_name3.classList.add("mes");
+                    temp_name3.style.color = "rgb(185,185,185)";
+                    temp_name3.textContent = message.username+"掉线了~~";
+                    top_title[1].appendChild(temp_name3);
+                    for(let i = 0; i < all_p.length; i++){
+                        if(all_p[i].textContent === message.username){
+                            top_title[0].removeChild(all_p[i]);
+                        }
+                    }
+                }
+            }
+            submit.addEventListener("click",() => {
+                res.send(text.value);
+                text.value = "";
+            })
+        });
+    </script>
+</body>
+</html>
