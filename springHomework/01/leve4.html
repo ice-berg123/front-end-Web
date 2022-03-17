@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Array.prototype.newMap = function (callback) {
+            const _this = this;
+            const newArr = [];
+            if ([..._this] === []) {
+                return [];
+            }
+            for (const item of [..._this]) {
+                newArr.push(callback(item));
+            }
+            return newArr
+        }
+        Array.prototype.newFilter = function (callback) {
+            const _this = this;
+            if ([..._this] === []) {
+                return [];
+            }
+            const newArr = [];
+            for (const item of [..._this]) {
+                if (callback(item)) {
+                    newArr.push(item);
+                }
+            }
+            return newArr;
+        }
+        Array.prototype.newReduce = function(callback){
+            const _this = this;
+            let arr = [..._this]
+            if (arr === []) {
+                return [];
+            }
+            let result;
+            if(arguments[1]){
+                result = arguments[1];
+            }
+            for(let i = 0; i < arr.length; i++){
+                if(i == 0 && !arguments[1]){
+                    result = arr[0];
+                    continue;
+                }
+                result  = callback(result,arr[i]);
+            }
+            return result;
+        }
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+        let result01 = arr.newMap((props) => {
+            return props * 2
+        });
+        console.log(arr)
+        console.log(result01)
+        let result02 = arr.newFilter((props) => {
+            return props >= 5;
+        })
+        console.log(result02);
+        let result03 = arr.newReduce((total,num)=>{
+            return total+num;
+        },10)
+        console.log(result03);
+    </script>
+</body>
+
+</html>

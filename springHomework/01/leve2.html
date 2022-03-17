@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin-top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="input" oninput="change()">
+    <div>regular:<span id="text01"></span></div>
+    <div>debounce:<span id="text02"></span></div>
+    <div>throttle:<span id="text03"></span></div>
+</body>
+<script>
+    const text = document.querySelectorAll("span")
+    const input = document.querySelector("#input")
+    function regular() {
+        text[0].textContent = input.value;
+    }
+    function debounce() {
+        let timer = null;
+
+        return function () {
+            if (timer) {
+                clearTimeout(timer)
+            }
+            timer = setTimeout(() => {
+                text[1].textContent = input.value;
+            }, 300);
+        }
+    }
+    function throttle() {
+        let timer = null;
+        return function () {
+            if (timer) {
+                return;
+            }
+            timer = setTimeout(() => {
+                text[2].textContent = input.value;
+                clearTimeout(timer);
+                timer = null;
+            }, 300);
+        }
+    }
+    let deb = debounce()
+    let thr = throttle()
+    function change() {
+        regular();
+        deb();
+        thr();
+    }
+</script>
+
+</html>

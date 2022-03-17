@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function sum(a, b, c) {
+            return a + b + c;
+        }
+
+        function curry() {
+            let n = 3;
+            let propsArr = [];
+            return function curried_sum() {
+                n = n - arguments.length;
+                for (let item of [...arguments]) {
+                    propsArr.push(item);
+                    console.log(propsArr);
+                }
+                if (n === 0) {
+                    const result = sum(propsArr.pop(), propsArr.pop(), propsArr.pop());
+                    n = 3;
+                    return result;
+                }
+                return curried_sum;
+            }
+        }
+        let curriedSum = curry(sum);
+        alert(curriedSum(1, 2, 3)); // 6，仍然可以被正常调用
+        alert(curriedSum(1)(2, 3)); // 6，对第一个参数的柯里化
+        alert(curriedSum(1)(2)(3)); // 6，全柯里化
+    </script>
+</body>
+
+</html>
