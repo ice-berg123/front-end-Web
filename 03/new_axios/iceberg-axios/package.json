@@ -1,0 +1,11 @@
+{
+    "name": "iceberg_axios",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "xmlhttprequest": "^1.8.0"
+    }
+}
